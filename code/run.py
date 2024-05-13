@@ -328,7 +328,7 @@ def evaluate(args, model, tokenizer, eval_when_training=False):
         nb_eval_steps += 1
     logits = np.concatenate(logits, 0)
     labels = np.concatenate(labels, 0)
-    preds = logits[:, 0] > 0.7
+    preds = logits[:, 0] > 0.5
     accuracy = accuracy_score(labels, preds)
     recall=recall_score(labels, preds)
     precision=precision_score(labels, preds)
@@ -373,7 +373,7 @@ def test(args, model, tokenizer):
             labels.append(label.cpu().numpy())
     logits = np.concatenate(logits, 0)
     labels = np.concatenate(labels, 0)
-    preds = logits[:, 0] > 0.7
+    preds = logits[:, 0] > 0.5
     accuracy = accuracy_score(labels, preds)
     recall=recall_score(labels, preds)
     precision=precision_score(labels, preds)
